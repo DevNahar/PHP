@@ -7,7 +7,7 @@ $display = 15.6 ;  //Datatype is float/double
 $brand = "hp";  //Datatype is string
 $has_VGA_cable = True;  //Datatype is boolean
 $product_quantity = 3;  //Datatype is integer
-$Condition = "old";  //Datatype is string
+$condition = "old";  //Datatype is string
 $product_price = 8000;  //Datatype is integer
 
 
