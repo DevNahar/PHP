@@ -81,7 +81,7 @@ So let’s calculate the factorial of 7. -->
     
     }
     
-    echo "<br>". "7! = 7*6*5*4*3*2*1 = " . $Factorial;
+    echo "<br>". "7! = 1*2*3*4*5*6*7 = " . $Factorial;
     
 ?>
 <!-- Class 4 --Assignment- 03 end -->
