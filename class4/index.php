@@ -11,11 +11,16 @@ So days of running month should dynamic (by php build in function) -->
 
 <h4>Select Date From Running Month </h4>
 
-<?php echo $month = date("F");?> 
+<?php 
+ $allDate = date("t");
+ echo $month = date("F"); 
+ 
+ ?> 
+
   
     <select>
       <?php        
-        for ($runningDate = date("t"); $runningDate >= 1; $runningDate--){
+        for ($runningDate = 1; $runningDate <= $allDate; $runningDate++){
        ?> 
              
         <option>
