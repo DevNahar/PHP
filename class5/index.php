@@ -18,18 +18,18 @@ Step 3: Hence, If the total number of factors is more than two, it is not a prim
     $num= array(12, 34, 2 ,6, 78);    
     foreach ($num as $val){         
         echo " Factors of $val are : ";  //factors
-        $prime = 0;
+        $prime = true;
 
-        for ( $i=1; $i<=$val; $i++){
+        for ( $i=2; $i<$val; $i++){
             
             if ($val % $i == 0){
                 echo  $i ." ";   //factors 
                
-                $prime++;  
+                $prime = false;  
             }  
         }         
 
-        if ($prime<3){                        
+        if ($prime){                        
             echo "<br> $val is a Prime Number <br><br>";  //When a number is divisible by only one and itself, then it is a prime number
         }else{                       
             echo "<br> $val is a Composite Number <br><br>"; //If the total number of factors is more than two, it is not a prime number but a composite number
