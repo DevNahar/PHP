@@ -53,7 +53,7 @@ Must mention Which type of array you have made. -->
 
 <?php  
 echo "<br>";
-
+echo "This is Multidimensional arrays <br><br>";
 $products = [
     ["Wireless Earphones",600,27],
     ["Dual-Band Wi-Fi Router",2790,13],
