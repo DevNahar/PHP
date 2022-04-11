@@ -57,13 +57,15 @@ echo "<br>";
 $products = [
     ["Wireless Earphones",600,27],
     ["Dual-Band Wi-Fi Router",2790,13],
-    ["watch",1240,22],
+    ["WiFi Security Camera",2230,15],
+    ["Watch",1240,22],
     ["Wallet",320,35]
 ];
 echo " Product Name - ".$products[0][0].", Price - ".$products[0][1]."Tk".", Stock Quantity -  ".$products[0][2]."<br>"."<br>";
 echo " Product Name - ".$products[1][0].", Price - ".$products[1][1]."Tk".", Stock Quantity -  ".$products[1][2]."<br>"."<br>";
 echo " Product Name - ".$products[2][0].", Price - ".$products[2][1]."Tk".", Stock Quantity -  ".$products[2][2]."<br>"."<br>";
 echo " Product Name - ".$products[3][0].", Price - ".$products[3][1]."Tk".", Stock Quantity -  ".$products[3][2]."<br>"."<br>"; 
+echo " Product Name - ".$products[4][0].", Price - ".$products[4][1]."Tk".", Stock Quantity -  ".$products[4][2]."<br>"."<br>"; 
  echo "<br>"; 
 
   echo "OR"."<br>";
@@ -73,7 +75,8 @@ echo " Product Name - ".$products[3][0].", Price - ".$products[3][1]."Tk".", Sto
  $products = [
     ["Wireless Earphones",600,27],
     ["Dual-Band Wi-Fi Router",2790,13],
-    ["watch",1240,22],
+    ["WiFi Security Camera",2230,15],
+    ["Watch",1240,22],
     ["Wallet",320,35]
 ];
 
