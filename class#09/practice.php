@@ -14,6 +14,26 @@
 
 <body>
 
+  <?php
+  // if(isset($_POST["submit"])){
+  //       $first_name = $_POST["first_name"] ;
+  //       $last_name = $_POST["last_name"];     
+  //       $email = $_POST["email"];   
+  //       $password = $_POST["password"];
+  //       $ConfirmPassword = $_POST["ConfirmPassword"];
+
+
+
+  //       if($first_name == "" || $last_name == "" || $email == "" || $first_name == "" || $password  == "" ||$ConfirmPassword == ""  ){
+  //         echo "All fields are requird";
+  //       }else{
+  //         echo "Everything ok";
+  //       }
+  //     }
+
+
+  ?>
+
 
 
   <div class="container ">
@@ -50,10 +70,10 @@
               <input type="password" class="form-control" name="ConfirmPassword" id="ConfirmPassword">
             </div>
             <div class=" from-group  mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <input type="checkbox" class="form-check-input" name="check" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">I accept the <a href="#">Terms of service</a> & <a href="#">privacy policy</a> .</label>
             </div>
-            <button type="submit" class="btn btn-primary mt-5 py-2 px-5">Register</button>
+            <button type="submit" class="btn btn-primary mt-5 py-2 px-5" name="submit">Register</button>
           </form>
 
         </div>
