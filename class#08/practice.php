@@ -69,7 +69,6 @@
                 return "F";
             }
         }
-
         if ($total_GPA >= 80 && $total_GPA <= 100) {
             return "A+";
         } elseif ($total_GPA >= 70 && $total_GPA <= 79) {
