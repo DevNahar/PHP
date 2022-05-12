@@ -14,7 +14,7 @@
 
 <body>
 
-  <!-- --- PRACTICE -----
+  <!-- --- Assignment 10 -----
 Project - Form Handling
 Validate - Set Dismissable alert message
 Validate - filter email or not 
@@ -26,7 +26,7 @@ Validate - edu email check function -->
   <?php
 
   /**
-   * alertfunction start
+   * alert for show validation alert
    * 
    */
   function alert($alertmsg, $alertBgColor)
@@ -41,29 +41,47 @@ Validate - edu email check function -->
   /**
    * validEmail For check valid email
    */
-        function validEmail($validemail) {
-          if (filter_var($validemail, FILTER_VALIDATE_EMAIL)) {
-              return true;
-          } else {
-              return false;
-          }
-      }
-
-
-  /**
-   * edumail for filtering institution email addresses
-   */
-  function edumail($edumail)
+  function validEmail($validemail)
   {
-    $array_edumail = ['diu.edu.bd', 'brac.edu.bd', 'nsu.edu.bd'];
-    $check_mail = explode("@", $edumail);
-    
-    if (in_array($check_mail[1], $array_edumail,2)) {
+    if (filter_var($validemail, FILTER_VALIDATE_EMAIL)) {
       return true;
     } else {
       return false;
     }
   }
+
+
+  /**
+   * edumail for filtering institution email addresses
+   */
+
+  function edumail($edumail)
+  {
+    $array_edumail = ['diu.edu.bd', 'brac.edu.bd', 'nsu.edu.bd'];
+    $check_mail = explode("@", $edumail);
+    if (in_array($check_mail[1], $array_edumail, 2)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+  /**
+   * submitData for show submitted all data
+   */
+
+  function submitData($first_name, $last_name, $username, $email, $password, $ConfirmPassword)
+  {
+    $allData = "<div> <b>Your First Name : </b>  $first_name  <br> <b> Your Last Name :  </b>  $last_name <br><b> Username :  </b>$username <br> <b> Your Email : </b>  $email  <br><b>  Your Password : </b>  $password  <br> <b> ConfirmPassword : </b>  $ConfirmPassword <br><br><br> </div>";
+
+    echo "<div class='card card wrap shadow w-30 mt-5 mb-3' style='width: 18rem;'>
+            <div class='card-body'><h3 class='card-title '>Submit Data</h3>";
+
+    return $allData;
+  }
+
+
 
   if (isset($_POST["submit"])) {
     $first_name = $_POST["first_name"];
@@ -72,7 +90,6 @@ Validate - edu email check function -->
     $email = $_POST["email"];
     $password = $_POST["password"];
     $ConfirmPassword = $_POST["ConfirmPassword"];
-
 
 
     if (empty($first_name) || empty($last_name) || empty($username) || empty($email) || empty($password)  || empty($ConfirmPassword)) {
@@ -94,22 +111,20 @@ Validate - edu email check function -->
 
   <div class="container ">
     <div class="row">
-
-
       <div class="card wrap shadow w-50 m-auto mt-5 p-3 mb-3 bg-light">
         <div class="card-header text-center pb-4  bg-light">
-          <!-- <button class="btn btn-primary  m-3 "><a class="text-white text-decoration-none " href="login.php">SignIn</a></button>
-          <button class="btn btn-primary  m-3 "><a class="text-white text-decoration-none" href="index.php ">SignUp</a></button> -->
-          <h3>Registration</h3>
+
+          <h3>Registration Form</h3>
 
         </div>
         <div class="card-body bg-light p-5">
-
           <form action="" method="POST">
             <div class="row mb-3">
+
               <?php if (isset($validationalert)) {
                 echo $validationalert;
-              }  ?>
+              }
+              ?>
 
               <div class="from-group col-lg-6 ">
                 <label for="firstname" class="form-label">FirstName</label>
@@ -148,13 +163,9 @@ Validate - edu email check function -->
 
 
 
-      <?php if (isset(
-        $_POST["submit"]
-      ) && validEmail($email) == true && edumail($email) == true && $password == $ConfirmPassword) {
-        $alldata =  "<div> <b>Your First Name : </b>  $first_name  <br> <b> Your Last Name :  </b>  $last_name <br><b> Username :  </b>$username <br> <b> Your Email : </b>  $email  <br><b>  Your Password : </b>  $password  <br> <b> ConfirmPassword : </b>  $ConfirmPassword <br><br><br> </div>";
-        echo "<div class='card card wrap shadow w-30 mt-5 mb-3' style='width: 18rem;'>
-                <div class='card-body'><h3 class='card-title '>Submit Data</h3>";
-        echo $alldata;
+      <?php
+      if (isset($_POST["submit"]) && validEmail($email) == true && edumail($email) == true && $password == $ConfirmPassword) {
+        echo submitData($first_name, $last_name, $username, $email, $password, $ConfirmPassword);
       }
       ?>
     </div>
