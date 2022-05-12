@@ -41,7 +41,9 @@
 
       <div class="card w-50 m-auto mt-5 p-5 bg-light">
         <div class="card-header text-center  bg-light">
-          <h3>Registration</h3>
+          <button class="btn btn-primary  m-3 "><a class="text-white text-decoration-none " href="login.php">SIGNIN</a></button>
+          <button class="btn btn-primary  m-3 "><a class="text-white text-decoration-none" href="index.php ">SIGNUP</a></button>    
+          
 
         </div>
         <div class="card-body bg-light p-5">
@@ -70,10 +72,10 @@
               <input type="password" class="form-control" name="ConfirmPassword" id="ConfirmPassword">
             </div>
             <div class=" from-group  mb-3 form-check">
-              <input type="checkbox" class="form-check-input" name="check" id="exampleCheck1">
+              <input type="checkbox" class="form-check-input" name="check" id="exampleCheck1"  required>
               <label class="form-check-label" for="exampleCheck1">I accept the <a href="#">Terms of service</a> & <a href="#">privacy policy</a> .</label>
             </div>
-            <button type="submit" class="btn btn-primary mt-5 py-2 px-5" name="submit">Register</button>
+            <button type="submit" class="btn btn-primary mt-5 py-2 px-5" name="submit">Submit</button>
           </form>
 
         </div>
