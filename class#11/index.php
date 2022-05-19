@@ -31,16 +31,18 @@ Field - select option field
 
   <?php
 
+
   /**
-   * alert for show validation alert
+   * olddata for show 
    * 
    */
-  function alert($alertmsg, $alertBgColor)
+  function olddata($allfield)
   {
-    return "<div class=\"alert alert-{$alertBgColor} alert-dismissible fade show\" role=\"alert\">  {$alertmsg}        
-    <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>
-    </div>
-    ";
+    if (isset($_POST[$allfield])) {
+      return $_POST[$allfield];
+    } else {
+      return "";
+    }
   }
 
 
@@ -56,10 +58,13 @@ Field - select option field
 
   $db_connect = mysqli_connect(hostname, host_user_name, host_password, db_name);
 
-  //Database connect
+  //Database 
 
-  $firstname_err = $lastname_err = $username_err = $email_err = $pass_err = $gender_err = $agree_err = "";
+  $firstname_err = $lastname_err = $username_err = $email_err = $pass_err = $age_err = $gender_err = $agree_err = "";
+  $agree_err = "";
   $check = "";
+  $flag = true;
+
   if (isset($_POST["submit"])) {
     $first_name = $_POST["first_name"];
     $last_name = $_POST["last_name"];
@@ -91,60 +96,73 @@ Field - select option field
 
 
 
-    if (empty($first_name)) {
+    if (empty($_POST["first_name"])) {
+
       $firstname_err = "First name is required";
+      $flag = false;
     } else {
-      $first_name = htmlspecialchars($first_name);
+      $firstname_err = "";
     }
-    if (empty($last_name)) {
+    if (empty($_POST["last_name"])) {
       $lastname_err = "last name is required";
+      $flag = false;
     } else {
-      $last_name = htmlspecialchars($last_name);
+
+      $lastname_err = "";
     }
-    if (empty($username)) {
+    if (empty($_POST["username"])) {
       $username_err = "Username is required";
+      $flag = false;
+    } else if (!preg_match("/^\w{5,20}$/", $username)) {
+      $username_err = "only letter & number allow(min5&max20word)";
+      $flag = false;
     } else {
-      $username = htmlspecialchars($username);
-      if (!preg_match("/^\w{5,20}$/", $username)) {
-        $username_err = "only letter & number allow(min5&max20word)";
-      } else {
-        $username_filter = $username;
-      }
+      $username_err = "";
     }
-    if (empty($email)) {
+
+    if (empty($_POST["email"])) {
       $email_err = "Email is required";
+      $flag = false;
+    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $email_err =  "email formate not valid";
+      $flag = false;
     } else {
-      $email = htmlspecialchars($email);
-      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $email_err =  "email formate not valid";
-      } else {
-        $valid_email = htmlspecialchars($email);
-      }
+      $email_err = "";
     }
-    if ($age > 60 && $age < 20) {
+
+    if ($_POST["age"] > 60 || $_POST["age"] < 20) {
       $age_err = "You are not perfect in this course";
+      $flag = false;
+    } else {
+      $age_err = "";
     }
     if ($password != $ConfirmPassword) {
       $pass_err = "ConfirmPassword wrong ";
+      $flag = false;
     } else {
-      $password = htmlspecialchars($password);
+      $pass_err = "";
     }
     if (empty($gender)) {
       $gender_err = "gender is required";
+      $flag = false;
     } else {
-      $gender = $gender;
+      $gender_err = "";
     }
     if ($check == "yes") {
       $check = $check;
     } else {
       $agree_err = "Please agree terms & condition";
+      $flag = false;
+    }
+
+
+    if ($flag) {
+      $reg_Success = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\"> Registration Successful <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button> </div>";
+      $_POST = '';
     }
   }
 
-  // if ($first_name && $last_name && $username_filter && $valid_email  && empty($gender) && $password && $age < 60 && $age > 20 && $check == "yes") {
-  //   $validationalert = alert("Registration successfull", "success");
-  // }
-  
+
   ?>
 
 
@@ -157,7 +175,8 @@ Field - select option field
           <div class="mt-3">
             <button class=" btn btn-primary mx-1 "> <a class="text-decoration-none text-white" href="">SignUp</a></button>
             <button class=" btn btn-primary mx-1 "><a class="text-decoration-none text-white" href="">SignIn</a></button>
-            <button class=" btn btn-primary mx-1 "><a class="text-decoration-none text-white" href="">User List</a></button>
+            <button class=" btn btn-primary mx-1 "><a class="text-decoration-none text-white" href="">User
+                List</a></button>
           </div>
 
         </div>
@@ -166,54 +185,52 @@ Field - select option field
           <form action="" method="POST">
             <div class="row mb-3">
 
-              <?php if (isset($validationalert)) {
-                echo $validationalert;
+              <?php if (isset($reg_Success)) {
+                echo $reg_Success;
               }
               ?>
 
               <div class="from-group col-lg-6 ">
                 <label for="firstname" class="form-label">FirstName</label>
-                <input type="text" class="form-control" name="first_name" id="firstname">
+                <input type="text" class="form-control" name="first_name" id="firstname" value="<?php echo olddata('first_name') ?>">
                 <div><span style="color: red;"><?php echo $firstname_err ?></span></div>
               </div>
               <div class="from-group col-lg-6 ">
                 <label for="lastname" class="form-label">LastName</label>
-                <input type="text" class="form-control" name="last_name" id="lastname">
+                <input type="text" class="form-control" name="last_name" id="lastname" value="<?php echo olddata('last_name') ?>">
                 <div><span style="color: red;"><?php echo $lastname_err ?></span></div>
               </div>
             </div>
             <div class="from-group mb-3">
               <label for="username" class="form-label">Username</label>
-              <input type="text" class="form-control" name="username" id="username">
+              <input type="text" class="form-control" name="username" id="username" value="<?php echo olddata('username') ?>">
               <div><span style="color: red;"><?php echo $username_err ?></span></div>
             </div>
             <div class="from-group mb-3 ">
               <label for="email" class="form-label">Email</label>
-              <input type="text" class="form-control" name="email" id="email">
+              <input type="text" class="form-control" name="email" id="email" value="<?php echo olddata('email') ?>">
               <div><span style="color: red;"><?php echo $email_err ?></span></div>
             </div>
             <div class="row mb-3">
               <div class="from-group col-lg-6 ">
                 <label for="age" class="form-label">Age</label>
-                <input type="text" class="form-control" name="age" id="age">
+                <input type="number" class="form-control" name="age" id="age" value="<?php echo olddata('age') ?>">
+                <div><span style="color: red;"><?php echo $age_err ?></span></div>
               </div>
               <div class="from-group col-lg-6 ">
                 <label for="phone" class="form-label">Phone Number</label>
-                <input type="tel" class="form-control" name="phone" id="phone">
+                <input type="tel" class="form-control" name="phone" id="phone" value="<?php echo olddata('phone') ?>">
               </div>
             </div>
-
-
-
 
 
             <div class="from-group mb-3">
               <label for="Password" class="form-label">Password</label>
-              <input type="password" class="form-control" name="password" id="Password">
+              <input type="password" class="form-control" name="password" id="Password" value="<?php echo olddata('password') ?>">
             </div>
             <div class=" from-group mb-3">
               <label for="ConfirmPassword" class="form-label">Confirm Password</label>
-              <input type="password" class="form-control" name="ConfirmPassword" id="ConfirmPassword">
+              <input type="password" class="form-control" name="ConfirmPassword" id="ConfirmPassword" value="<?php echo olddata('ConfirmPassword') ?>">
               <div><span style="color: red;"><?php echo $pass_err ?></span></div>
             </div>
             <div class="row mb-5">
@@ -265,7 +282,8 @@ Field - select option field
 
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  </script>
 
 </body>
 
