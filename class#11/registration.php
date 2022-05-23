@@ -105,7 +105,7 @@
 
 
     if ($flag) {
-    //   $reg_Success = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\"> Registration Successful <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button> </div>";
+      $reg_Success = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\"> Registration Successful <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button> </div>";
       
        //insert_query
 

@@ -4,10 +4,7 @@ require_once 'db.php';
 
 $select= "SELECT Id, Firstname, Lastname, Username, Email FROM users";
 $select_query = mysqli_query($db_connect,$select);
-foreach($select_query as $single_row){
-   print_r($single_row);
-   echo "<br>";
-}
+
 ?>
 
 
@@ -18,7 +15,7 @@ foreach($select_query as $single_row){
           <h3>REGISTRATION FORM</h3>
           <div class="mt-3">
             <button class=" btn btn-primary mx-1 "> <a class="text-decoration-none text-white" href="index.php">SignUp</a></button>
-            <button class=" btn btn-primary mx-1 "><a class="text-decoration-none text-white" href="signin.php">SignIn</a></button>
+            <!-- <button class=" btn btn-primary mx-1 "><a class="text-decoration-none text-white" href="signin.php">SignIn</a></button> -->
             <button class=" btn btn-primary mx-1 "><a class="text-decoration-none text-white" href="user.php">User
                 List</a></button>
           </div>
@@ -31,9 +28,10 @@ foreach($select_query as $single_row){
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Firstname</th>
+      <th scope="col">Lastname</th>
       <th scope="col">Username</th>
       <th scope="col">Email</th>
-      <th scope="col">Phone</th>
+      
     </tr>
   </thead>
   <tbody>
@@ -41,13 +39,22 @@ foreach($select_query as $single_row){
 <?php
     
   ?>
-<tr>
-      <th scope="row"><?php ?></th>
-      <td><?php ?></td>
-      <td>Otto</td>
-      <td>@mdo</td>
 
-    </tr>
+  <?php foreach($select_query as $single_row){
+  
+    ?>
+    <tr>
+      <th scope="row"><?= $single_row['Id'] ?></th>
+      <td><?php echo $single_row['Firstname'] ?></td>
+      <td><?= $single_row["Lastname"]?></td>
+      <td><?= $single_row["Username"]?></td>
+      <td><?= $single_row["Email"]?></td>
+      
+</tr>
+
+      <?php }?>
+
+    
       <?php  ?>
      </tbody>
 </table>
