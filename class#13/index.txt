@@ -69,6 +69,8 @@ delete query ::  DELETE FROM products Where id = 3;
 
 
 
+
+
 CREATE TABLE comments
 ( 
     id INT AUTO_INCREMENT,
@@ -80,4 +82,17 @@ CREATE TABLE comments
     PRIMARY KEY (id)
     
 );
+
+single insert query ::  INSERT INTO comments (post_id, comment, updated_at, deleted_at) 
+			VALUES ('201', 'Nice work! on average, Keep practicing..' , '2022-5-30 03:01:55', '2022-5-30 04:05:45');
+
+multiple insert query ::  INSERT INTO comments (post_id, comment, updated_at, deleted_at) 
+			  VALUES ('202', 'good work' , '2022-5-30 04:15:45', '2022-5-30 04:30:45'),
+				 ('203', 'Nice work' , '2022-5-30 04:45:24', '2022-5-30 04:53:35'),
+                                 ('204', 'Keep practicing..' , '2022-5-30 04:45:24', '2022-5-30 04:53:35');
+
+
+
+update query ::  UPDATE comments SET comment = 'Good job' WHERE id = 3;
+delete query ::  DELETE FROM comments WHERE id = 2;
 
