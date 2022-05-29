@@ -29,7 +29,7 @@ require_once 'registration.php';
           <h3>REGISTRATION FORM</h3>
           <div class="mt-3">
             <button class=" btn btn-primary mx-1 "> <a class="text-decoration-none text-white" href="index.php">SignUp</a></button>
-            <!-- <button class=" btn btn-primary mx-1 "><a class="text-decoration-none text-white" href="signin.php">SignIn</a></button> -->
+            <button class=" btn btn-primary mx-1 "><a class="text-decoration-none text-white" href="signin.php">SignIn</a></button>
             <button class=" btn btn-primary mx-1 "><a class="text-decoration-none text-white" href="user.php">User
                 List</a></button>
           </div>

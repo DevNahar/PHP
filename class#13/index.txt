@@ -1,0 +1,83 @@
+       
+       Assignment 14
+
+[Create a Database name  user_information]
+[Create Users ,Products & Comments table ]  
+[Make a single & multiple insert query and
+also make a update & delete query for every table] 
+
+
+
+ CREATE DATABASE user_information;
+
+
+CREATE TABLE users
+( 
+    id INT AUTO_INCREMENT,
+    username VARCHAR(30),
+    age INT,
+    phone VARCHAR(15),
+    address VARCHAR(50),
+    created_at TIMESTAMP,
+    updated_at DATETIME,
+    PRIMARY KEY (id)
+    
+);
+
+
+single insert query ::  INSERT INTO users (username, age, phone, address, updated_at) 
+			VALUES ('Anuva', 19 , '01820972292' , 'Dhaka', '2022-5-30 12:55:45');
+
+multiple insert query ::  INSERT INTO users (username, age, phone, address, updated_at) 
+			  VALUES ('Ariba', 26, '01620952894', 'Comilla','2022-5-30 12:58:45'),
+				 ('Sukhy', 33, '01723952094', 'Noakhali','2022-5-30 01:02:52'),
+				 ('Nafim', 17, '01439595023','Sylhet','2022-5-30 01:05:35');
+
+
+
+update query ::  UPDATE users SET username = 'Nahar', phone = '01820972292' WHERE id = 3;
+delete query ::  DELETE FROM users WHERE id = 2;
+
+
+
+
+CREATE TABLE products
+( 
+    id INT AUTO_INCREMENT,
+    post_title VARCHAR(30),
+    post_details TEXT,
+    post_file VARCHAR(30),	
+    created_at TIMESTAMP,
+    updated_at DATETIME,
+    deleted_at DATETIME,    
+    PRIMARY KEY (id)
+    
+);
+
+single insert query ::  INSERT INTO products (post_title, post_details, updated_at, deleted_at) 
+			VALUES ('Online store & shopping',  'I can create a fully functional online store with any type of payment gateway support and add shopping cart functionality into you’re                                  existing website.', '2022-5-30 12:55:45','2022-5-30 02:55:45');
+
+multiple insert query ::  INSERT INTO products (post_title, post_details, updated_at, deleted_at) 
+			VALUES ('Fixing problems',  'Website problem & bugs its a common problem for every website. Dont worry about bugs and problems. I can fix any type of problems & bugs for any website.', '2022-5-30 12:55:45','2022-5-30 01:20:45'),
+                         ('Maintenance & Optimized',  'Slow loading website its the biggest problem for every website. I can boost your website speed by optimization your website. And if  you dont have time to maintain your website dont worry Im here.', '2022-5-30 12:55:45','2022-5-30 02:55:45');
+
+
+
+update query ::  UPDATE products SET post_title = 'functional online store' WHERE id = 2;
+delete query ::  DELETE FROM products Where id = 3;
+
+
+
+
+CREATE TABLE comments
+( 
+    id INT AUTO_INCREMENT,
+    post_id INT,
+    comment VARCHAR(250),   	
+    created_at TIMESTAMP,
+    updated_at DATETIME,
+    deleted_at DATETIME,    
+    PRIMARY KEY (id)
+    
+);
+
