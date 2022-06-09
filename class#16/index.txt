@@ -1,5 +1,5 @@
 
-  Assignment 14
+  Assignment 16
 
 
 Create a Database name  user_information.
@@ -20,48 +20,71 @@ Show me how many users get a salary range of ( 5000 -15000).
 
 
 
-==================== Assignment 14 ====================
+==================== Assignment 16 ====================
+
+
+==== create database 
+
+CREATE DATABASE information;
 
 
 
-CREATE DATABASE user_information;
-
-CREATE TABLE user_info
+==== create users table 
+ 
+CREATE TABLE users
 ( 
-    id INT AUTO_INCREMENT,
-    username VARCHAR(30),
-    age INT,
-    phone VARCHAR(15),
-    address VARCHAR(50),
-    salary INT,
-    country VARCHAR(50),
-    created_at TIMESTAMP,
-    updated_at DATETIME,
-    PRIMARY KEY (id)
-    
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(30)
+   
 );
 
 
-INSERT INTO users (username, age, phone, address, salary, country,  updated_at) 
+==== data_insert in users table 
+
+INSERT INTO users (username) VALUES 
+('Sukhy'),('Nafim'),('Anuva'),('Ariba'),('Sharfuddin');
+
+
+
+
+==== create user_details table 
+
+CREATE TABLE user_details
+( 
+    id INT AUTO_INCREMENT  PRIMARY KEY,
+    user_id INT,
+    user_email VARCHAR(30),
+    user_phone VARCHAR(15)
+    user_address VARCHAR(50)   
+    
+);
+
+==== data_insert in user_details table 
+
+INSERT INTO user_details (user_id, user_email, user_phone, user_address) 
 VALUES 
-('Nuomi',19,'0179998889','Kolkata',7000,'India','2022-5-30 12:58:45'),
-('Ariba', 26, '01620952894', 'Dhaka',10000, 'Bangladesh','2022-5-30 01:02:52'),
-('Sukhy', 33, '01723952094','Thimpu',15000, 'Nepal','2022-5-30 01:02:52'),
-('Oshmi', 33, '01823932590','Para',5000, 'Bangladesh','2022-5-30 01:02:52'),
-('Nafim', 17, '01439595023','Manitoba',12000,'Canada','2022-5-30 01:05:35');
+(1, 'sukhy@gmail.com', '01820972292', 'Noakhali'),
+(4, 'ariba@gmail.com', '01727637222', 'feni'),
+(2, 'nafim@gmail.com', '01682097682', 'commila'),
+(5, 'sharfuddin@gmail.com', '01420952092', 'Noakhali'),
+(3, 'anuva@gmail.com', '01823812292', 'sylhet');
 
 
-SELECT * FROM users WHERE country = 'bangladesh';
+====INNER JOIN
 
-SELECT * FROM users ORDER BY salary DESC;
+SELECT users.id, users.username, User_details.user_email,User_details.user_phone,User_details.user_phone FROM users INNER JOIN User_details ON users.id = User_details.user_id ORDER BY users.id;
 
-SELECT MAX(salary) FROM users;
 
-SELECT MIN(salary) FROM users;
+====LEFT JOIN
 
-SELECT COUNT(*) FROM users;
+SELECT users.id, users.username, User_details.user_email,User_details.user_phone,User_details.user_phone FROM users LEFT JOIN User_details ON users.id = User_details.user_id ORDER BY users.id;
 
-SELECT * FROM users WHERE salary BETWEEN 5000 AND 15000;
+====RIGHT JOIN
+
+SELECT users.id, users.username, User_details.user_email,User_details.user_phone,User_details.user_phone FROM users RIGHT JOIN User_details ON users.id = User_details.user_id ORDER BY users.id;
+
+
+
 
 
 
