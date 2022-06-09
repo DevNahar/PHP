@@ -1,0 +1,70 @@
+
+  Assignment 14
+
+
+Create a Database name  user_information.
+
+In Users table 9 column:  id, username, age, phone, address, salary, country,created_at, updated_at  ( you must have 5 user information )
+
+Find users who live in the same country 
+
+Show data  by high to low salary 
+
+Show data who get the highest salary
+
+Show data who get the lowest 
+
+Show how many table rows you have 
+
+Show me how many users get a salary range of ( 5000 -15000).
+
+
+
+==================== Assignment 14 ====================
+
+
+
+CREATE DATABASE user_information;
+
+CREATE TABLE user_info
+( 
+    id INT AUTO_INCREMENT,
+    username VARCHAR(30),
+    age INT,
+    phone VARCHAR(15),
+    address VARCHAR(50),
+    salary INT,
+    country VARCHAR(50),
+    created_at TIMESTAMP,
+    updated_at DATETIME,
+    PRIMARY KEY (id)
+    
+);
+
+
+INSERT INTO users (username, age, phone, address, salary, country,  updated_at) 
+VALUES 
+('Nuomi',19,'0179998889','Kolkata',7000,'India','2022-5-30 12:58:45'),
+('Ariba', 26, '01620952894', 'Dhaka',10000, 'Bangladesh','2022-5-30 01:02:52'),
+('Sukhy', 33, '01723952094','Thimpu',15000, 'Nepal','2022-5-30 01:02:52'),
+('Oshmi', 33, '01823932590','Para',5000, 'Bangladesh','2022-5-30 01:02:52'),
+('Nafim', 17, '01439595023','Manitoba',12000,'Canada','2022-5-30 01:05:35');
+
+
+SELECT * FROM users WHERE country = 'bangladesh';
+
+SELECT * FROM users ORDER BY salary DESC;
+
+SELECT MAX(salary) FROM users;
+
+SELECT MIN(salary) FROM users;
+
+SELECT COUNT(*) FROM users;
+
+SELECT * FROM users WHERE salary BETWEEN 5000 AND 15000;
+
+
+
+ 
+
+ 
