@@ -1,22 +1,17 @@
 
-  Assignment 16
+=======Question of assignment=========
 
 
-Create a Database name  user_information.
+Create a Database name  information.
 
-In Users table 9 column:  id, username, age, phone, address, salary, country,created_at, updated_at  ( you must have 5 user information )
+	Create two table  User and User_details and join both of them with inner join,
 
-Find users who live in the same country 
+	Left join , right join use sql query
 
-Show data  by high to low salary 
 
-Show data who get the highest salary
+Now create a text file and submit 
 
-Show data who get the lowest 
 
-Show how many table rows you have 
-
-Show me how many users get a salary range of ( 5000 -15000).
 
 
 
