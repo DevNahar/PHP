@@ -49,7 +49,7 @@ CREATE TABLE user_details
     id INT AUTO_INCREMENT  PRIMARY KEY,
     user_id INT,
     user_email VARCHAR(30),
-    user_phone VARCHAR(15)
+    user_phone VARCHAR(15),
     user_address VARCHAR(50)   
     
 );
@@ -59,24 +59,24 @@ CREATE TABLE user_details
 INSERT INTO user_details (user_id, user_email, user_phone, user_address) 
 VALUES 
 (12, 'sukhy@gmail.com', '01820972292', 'Noakhali'),
-(4, 'ariba@gmail.com', '01727637222', 'feni'),
-(8, 'nafim@gmail.com', '01682097682', 'commila'),
+(4, 'ariba@gmail.com', '01727637222', 'Feni'),
+(8, 'nafim@gmail.com', '01682097682', 'Commila'),
 (5, 'sharfuddin@gmail.com', '01420952092', 'Noakhali'),
-(3, 'anuva@gmail.com', '01823812292', 'sylhet');
+(3, 'anuva@gmail.com', '01823812292', 'Sylhet');
 
 
 ====INNER JOIN
 
-SELECT users.id, users.username, User_details.user_email,User_details.user_phone,User_details.user_phone FROM users INNER JOIN User_details ON users.id = User_details.user_id ORDER BY users.id;
+SELECT users.id, users.username, User_details.user_email,User_details.user_phone,User_details.user_address FROM users INNER JOIN User_details ON users.id = User_details.user_id ORDER BY users.id;
 
 
 ====LEFT JOIN
 
-SELECT users.id, users.username, User_details.user_email,User_details.user_phone,User_details.user_phone FROM users LEFT JOIN User_details ON users.id = User_details.user_id ORDER BY users.id;
+SELECT users.id, users.username, User_details.user_email,User_details.user_phone,User_details.user_address FROM users LEFT JOIN User_details ON users.id = User_details.user_id ORDER BY User_details.user_id;
 
 ====RIGHT JOIN
 
-SELECT users.id, users.username, User_details.user_email,User_details.user_phone,User_details.user_phone FROM users RIGHT JOIN User_details ON users.id = User_details.user_id ORDER BY users.id;
+SELECT users.id, users.username, User_details.user_email,User_details.user_phone,User_details.user_address FROM users RIGHT JOIN User_details ON users.id = User_details.user_id ORDER BY users.id;
 
 
 
