@@ -1,0 +1,88 @@
+
+=======Question of assignment=========
+
+
+Create a Database name  information.
+
+	Create two table  User and User_details and join both of them with inner join,
+
+	Left join , right join use sql query
+
+
+Now create a text file and submit 
+
+
+
+
+
+==================== Assignment 16 ====================
+
+
+==== create database 
+
+CREATE DATABASE information;
+
+
+
+==== create users table 
+ 
+CREATE TABLE users
+( 
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(30)
+   
+);
+
+
+==== data_insert in users table 
+
+INSERT INTO users (username) VALUES 
+('Sukhy'),('Nafim'),('Anuva'),('Ariba'),('Sharfuddin');
+
+
+
+
+==== create user_details table 
+
+CREATE TABLE user_details
+( 
+    id INT AUTO_INCREMENT  PRIMARY KEY,
+    user_id INT,
+    user_email VARCHAR(30),
+    user_phone VARCHAR(15),
+    user_address VARCHAR(50)   
+    
+);
+
+==== data_insert in user_details table 
+
+INSERT INTO user_details (user_id, user_email, user_phone, user_address) 
+VALUES 
+(12, 'sukhy@gmail.com', '01820972292', 'Noakhali'),
+(4, 'ariba@gmail.com', '01727637222', 'Feni'),
+(8, 'nafim@gmail.com', '01682097682', 'Commila'),
+(5, 'sharfuddin@gmail.com', '01420952092', 'Noakhali'),
+(3, 'anuva@gmail.com', '01823812292', 'Sylhet');
+
+
+====INNER JOIN
+
+SELECT users.id, users.username, User_details.user_email,User_details.user_phone,User_details.user_address FROM users INNER JOIN User_details ON users.id = User_details.user_id ORDER BY users.id;
+
+
+====LEFT JOIN
+
+SELECT users.id, users.username, User_details.user_email,User_details.user_phone,User_details.user_address FROM users LEFT JOIN User_details ON users.id = User_details.user_id ORDER BY User_details.user_id;
+
+====RIGHT JOIN
+
+SELECT users.id, users.username, User_details.user_email,User_details.user_phone,User_details.user_address FROM users RIGHT JOIN User_details ON users.id = User_details.user_id ORDER BY users.id;
+
+
+
+
+
+
+ 
+
+ 
