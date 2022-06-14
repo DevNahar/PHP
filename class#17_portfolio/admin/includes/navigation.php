@@ -6,7 +6,7 @@
 								
 								<li class="active"><a href="index.php"><i class="icon-home2"></i> <span>Dashboard</span></a>
 								</li>
-								<li ><a href="banner.php"><i class="icon-bookmark"></i> <span>Banners</span></a>
+								<li ><a href="bannerlist.php"><i class="icon-bookmark"></i> <span>Banners</span></a>
 								</li>
 								<li ><a href="index.html"><i class="icon-clipboard3"></i> <span>services</span></a>
 								</li>
